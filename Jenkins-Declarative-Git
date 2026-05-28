@@ -1,7 +1,7 @@
 pipeline{
     agent any
     stages{
-        stage("Git Checkout Java Project"){
+        stage("Git Checkout Java Project."){
             steps{
                 echo "Repository checked out successfully."
                 sh 'pwd'
