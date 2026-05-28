@@ -1,7 +1,7 @@
 pipeline{
     agent any
     stages{
-        stage("Git Checkout"){
+        stage("Git Checkout java app"){
             steps{
                 git credentialsId: 'github', url: 'https://github.com/javahometech/myweb'
             }
