@@ -1,9 +1,12 @@
 pipeline{
     agent any
     stages{
-        stage("Git Checkout java app"){
+        stage("Git Checkout new trigger"){
             steps{
-                git credentialsId: 'github', url: 'https://github.com/Saikiran-Panuganti/myweb.git'
+                echo "Repository checked out successfully."
+                sh 'pwd'
+                sh 'ls -lrt'
+                echo "Tested Checkout moving to net step"
             }
         }
     }
