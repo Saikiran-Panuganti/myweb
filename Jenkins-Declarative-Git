@@ -15,7 +15,19 @@ pipeline{
         stage("Maven Build"){
             steps{
                 sh 'mvn clean package -DskipTests'
+                sh 'mv target/*.war target/myweb.war'
             }
         }
+        stage("Deploy-dev"){
+            steps{
+                sshagent(['Tomcat-New']) {
+                    ssh """
+                        scp -o StrictHostKeyChecking=no target/myweb.war  ubuntu@172.31.18.153:/opt/tomcat/webapps/
+                        ssh 'ubuntu@172.31.18.153 /opt/tomcat/bin/shutdown.sh'
+                        ssh 'ubuntu@172.31.18.153 /opt/tomcat/bin/startup.sh'
+                    """
+                }
+            }
+        }            
     }
 }
