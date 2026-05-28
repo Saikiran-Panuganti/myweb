@@ -1,6 +1,9 @@
 currentBuild.displayName="Java-service-#"+currentBuild.number
 pipeline{
     agent any
+    environment{
+        PATH = "/opt/maven/bin:$PATH"
+    }
     stages{
         stage("Git Checkout Java Project!!!!"){
             steps{
@@ -9,5 +12,11 @@ pipeline{
                 sh 'ls -lrt'
             }
         }
+        stage("Maven Build"){
+            steps{
+                sh 'mvn clean package'
+            }
+        }
+
     }
 }
