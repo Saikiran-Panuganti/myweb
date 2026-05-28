@@ -1,4 +1,4 @@
-currentBuild.displayName="Java-service"+currentBuild.number
+currentBuild.displayName="Java-service-#"+currentBuild.number
 pipeline{
     agent any
     stages{
